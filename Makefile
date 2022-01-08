@@ -25,7 +25,8 @@ dirs: $(OUT_DIRS)
 $(OUT_BIN)/%: dirs $(BIN_DIR)/%.cc
 	g++ -o $@ $(filter-out $<,$^)
 
-$(BIN_PHONIES): dirs $(BIN_EXECS)
+$(BIN_PHONIES):
+	@$(MAKE) $(OUT_BIN)/$@
 
 clean:
 	rm -rf obj
